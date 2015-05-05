@@ -1,7 +1,7 @@
 {
   "name": "canvas-lms-api",
   "description": "Promise-driven accessor for the Canvas LMS API",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "keywords": [
     "api",
     "canvas"
@@ -18,7 +18,10 @@
   },
   "main": "./lib/canvas",
   "dependencies": {
-    "bluebird": "^2.2.2",
-    "request": "^2.38.0"
+    "bluebird": "^2.9.25",
+    "lodash.isstring": "^3.0.1",
+    "lodash.merge": "^3.2.1",
+    "qs": "^2.4.1",
+    "request": "^2.55.1"
   }
 }
