@@ -16,6 +16,7 @@
     "email": "aaron.bean@beardon.com",
     "url": "https://github.com/aaronbean"
   },
+  "repository": "https://github.com/beardon/canvas-lms-api.git",
   "main": "./lib/canvas",
   "dependencies": {
     "bluebird": "^2.9.25",
