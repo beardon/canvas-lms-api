@@ -19,10 +19,9 @@
   "repository": "https://github.com/beardon/canvas-lms-api.git",
   "main": "./lib/canvas",
   "dependencies": {
-    "bluebird": "^2.9.25",
-    "lodash.isstring": "^3.0.1",
-    "lodash.merge": "^3.2.1",
-    "qs": "^2.4.1",
-    "request": "^2.55.1"
+    "bluebird": "^3.1.1",
+    "lodash": "^4.0.0",
+    "qs": "^5.2.0",
+    "request": "^2.67.0"
   }
 }
