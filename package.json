@@ -21,7 +21,9 @@
     "bluebird": "^2.9.25",
     "lodash.isstring": "^3.0.1",
     "lodash.merge": "^3.2.1",
+    "parse-link-header": "^0.4.1",
     "qs": "^2.4.1",
-    "request": "^2.55.1"
+    "request": "^2.55.1",
+    "underscore": "^1.8.3"
   }
 }
