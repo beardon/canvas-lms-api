@@ -1,7 +1,7 @@
 {
   "name": "canvas-lms-api",
   "description": "Promise-driven accessor for the Canvas LMS API",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "keywords": [
     "api",
     "canvas"
@@ -16,14 +16,13 @@
     "email": "aaron.bean@beardon.com",
     "url": "https://github.com/aaronbean"
   },
+  "repository": "https://github.com/beardon/canvas-lms-api.git",
   "main": "./lib/canvas",
   "dependencies": {
-    "bluebird": "^2.9.25",
-    "lodash.isstring": "^3.0.1",
-    "lodash.merge": "^3.2.1",
+    "bluebird": "^3.1.1",
+    "lodash": "^4.0.0",
     "parse-link-header": "^0.4.1",
-    "qs": "^2.4.1",
-    "request": "^2.55.1",
-    "underscore": "^1.8.3"
+    "qs": "^5.2.0",
+    "request": "^2.67.0"
   }
 }
