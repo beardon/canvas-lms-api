@@ -2,3 +2,4 @@
 node_modules
 *.iml
 coverage/
+.coveralls.yml

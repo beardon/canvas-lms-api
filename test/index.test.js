@@ -46,18 +46,54 @@ describe('Basic functionality', () => {
         });
     });
 
+    it('handles HTTP errors appropriately', () => {
+        api.get('/api/v1/users/2', () => true).reply(404, {errors: [{message: 'User not found'}]});
+        return canvas.get('users/2').catch(err => {
+            expect(err.message).to.equal('User not found');
+            expect(response.error);
+        });
+    });
+
 });
 
 describe('Paging', () => {
 
-    let linkHeader = '<https://canvas.test.instructure.com/api/v1/accounts/self/users?opaqueA; rel="current",\n<https://canvas.test.instructure.com/api/v1/accounts/self/users?opaqueB>; rel="next",\n<https://canvas.test.instructure.com/api/v1/accounts/self/users?opaqueC>; rel="first",\n<https://canvas.test.instructure.com/api/v1/accounts/self/users?opaqueD>; rel="last"'
+    const linkHeader = '<https://canvas.test.instructure.com/api/v1/accounts/self/users?opaqueA; rel="current",\n<https://canvas.test.instructure.com/api/v1/accounts/self/users?opaqueB>; rel="next",\n<https://canvas.test.instructure.com/api/v1/accounts/self/users?opaqueC>; rel="first",\n<https://canvas.test.instructure.com/api/v1/accounts/self/users?opaqueD>; rel="last"'
     it('automatically fetches all pages', () => {
-      api.get('/api/v1/accounts/self/users', () => true).reply(200, [response.user1], {Link: linkHeader});
-      api.get('/api/v1/accounts/self/users?opaqueB=', () => true).reply(200, [response.user1]);
-      return canvas.get('/accounts/self/users').then(response => {
-        expect(response.length).to.equal(2);
-        expect(response.success);
-      });
+        api.get('/api/v1/accounts/self/users', () => true).reply(200, [response.user1], {Link: linkHeader});
+        api.get('/api/v1/accounts/self/users?opaqueB=', () => true).reply(200, [response.user1]);
+        return canvas.get('/accounts/self/users').then(response => {
+            expect(response.length).to.equal(2);
+            expect(response.success);
+        });
+    });
+
+});
+
+describe('Throttling', () => {
+
+     it('waits and retries rate limited requests', () => {
+        api.get('/api/v1/users/1', () => true).reply(403, 'Rate Limit Exceeded');
+        api.get('/api/v1/users/1', () => true).reply(200, response.user1);
+        return canvas.get('users/1').then(response => {
+            expect(typeof response).to.equal('object');
+            expect(response.success);
+        });
+    });
+
+    it('waits at least 50 ms when half of rate limit budget is exhausted', () => {
+        api.get('/api/v1/users/1', () => true).reply(200, response.user1, {'X-Rate-Limit-Remaining': 100});
+        api.get('/api/v1/users/1', () => true).reply(200, response.user1, {'X-Rate-Limit-Remaining': 25});
+        api.get('/api/v1/users/1', () => true).reply(200, response.user1, {'X-Rate-Limit-Remaining': 25});
+        return canvas.get('users/1').then(() => canvas.get('users/1'))
+        .then(() => {
+            const start = new Date();
+            return canvas.get('users/1').then(response => {
+                expect(new Date() - start).to.be.at.least(50);
+                expect(typeof response).to.equal('object');
+                expect(response.success);
+            });
+        });
     });
 
 });
