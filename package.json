@@ -24,11 +24,11 @@
     "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls"
   },
   "dependencies": {
-    "bluebird": "^3.1.1",
-    "lodash": "^4.0.0",
-    "parse-link-header": "^0.4.1",
-    "qs": "^5.2.0",
-    "request": "^2.67.0"
+    "bluebird": "^3.5.1",
+    "lodash": "^4.17.10",
+    "parse-link-header": "^1.0.1",
+    "qs": "^6.5.2",
+    "request": "^2.87.0"
   },
   "devDependencies": {
     "chai": "^4.1.2",
