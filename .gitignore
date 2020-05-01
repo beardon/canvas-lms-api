@@ -3,3 +3,4 @@ node_modules
 *.iml
 coverage/
 .coveralls.yml
+.nyc_output/
