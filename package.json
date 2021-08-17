@@ -26,7 +26,8 @@
   },
   "dependencies": {
     "bluebird": "^3.7.2",
-    "lodash": "^4.17.21",
+    "lodash.merge": "^4.6.2",
+    "lodash.union": "^4.6.0",
     "parse-link-header": "^1.0.1",
     "qs": "^6.10.1",
     "request": "^2.88.2"
