@@ -25,7 +25,7 @@
     "prepare": "npm run snyk-protect"
   },
   "dependencies": {
-    "bluebird": "^3.7.2",
+    "delay": "^5.0.0",
     "lodash.merge": "^4.6.2",
     "lodash.union": "^4.6.0",
     "node-fetch": "^2.6.1",
