@@ -58,7 +58,7 @@ describe('Basic functionality', () => {
 
 describe('Paging', () => {
 
-    const linkHeader = '<https://canvas.test.instructure.com/api/v1/accounts/self/users?opaqueA; rel="current",\n<https://canvas.test.instructure.com/api/v1/accounts/self/users?opaqueB>; rel="next",\n<https://canvas.test.instructure.com/api/v1/accounts/self/users?opaqueC>; rel="first",\n<https://canvas.test.instructure.com/api/v1/accounts/self/users?opaqueD>; rel="last"'
+    const linkHeader = '<https://canvas.test.instructure.com/api/v1/accounts/self/users?opaqueA>; rel="current", <https://canvas.test.instructure.com/api/v1/accounts/self/users?opaqueB>; rel="next", <https://canvas.test.instructure.com/api/v1/accounts/self/users?opaqueC>; rel="first", <https://canvas.test.instructure.com/api/v1/accounts/self/users?opaqueD>; rel="last"'
     it('automatically fetches all pages', () => {
         api.get('/api/v1/accounts/self/users', () => true).reply(200, [response.user1], {Link: linkHeader});
         api.get('/api/v1/accounts/self/users?opaqueB=', () => true).reply(200, [response.user1]);
