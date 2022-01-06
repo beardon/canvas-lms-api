@@ -29,7 +29,7 @@
     "lodash.merge": "^4.6.2",
     "lodash.union": "^4.6.0",
     "node-fetch": "^2.6.1",
-    "parse-link-header": "^1.0.1",
+    "parse-link-header": "^2.0.0",
     "qs": "^6.10.1"
   },
   "devDependencies": {
