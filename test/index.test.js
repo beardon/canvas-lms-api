@@ -1,8 +1,8 @@
-const expect = require('chai').expect;
-const nock = require('nock');
+import { expect } from 'chai';
+import nock from 'nock';
 
-const Canvas = require('../lib/canvas');
-const response = require('./response');
+import Canvas from '../lib/canvas.js';
+import response from './response.js';
 
 const canvas = new Canvas('https://canvas.test.instructure.com', {'accessToken': 'abc123'});
 
